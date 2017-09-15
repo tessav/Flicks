@@ -1,6 +1,6 @@
-# Project 1 - *Name of App Here*
+# Project 1 - Flicks
 
-**Name of your app** shows the latest movies currently playing in theaters. The app utilizes the Movie Database API to display images and basic information about these movies to the user.
+Flicks shows the latest movies currently playing in theaters. The app utilizes the Movie Database API to display images and basic information about these movies to the user.
 
 Time spent: **X** hours spent in total
 
@@ -8,11 +8,11 @@ Time spent: **X** hours spent in total
 
 The following **required** functionality is completed:
 
-* [ ] User can **scroll through current movies** from the Movie Database API
-* [ ] Layout is optimized with the [ViewHolder](http://guides.codepath.com/android/Using-an-ArrayAdapter-with-ListView#improving-performance-with-the-viewholder-pattern) pattern.
-* [ ] For each movie displayed, user can see the following details:
-  * [ ] Title, Poster Image, Overview (Portrait mode)
-  * [ ] Title, Backdrop Image, Overview (Landscape mode)
+* [X] User can **scroll through current movies** from the Movie Database API
+* [X] Layout is optimized with the [ViewHolder](http://guides.codepath.com/android/Using-an-ArrayAdapter-with-ListView#improving-performance-with-the-viewholder-pattern) pattern.
+* [X] For each movie displayed, user can see the following details:
+  * [X] Title, Poster Image, Overview (Portrait mode)
+  * [X] Title, Backdrop Image, Overview (Landscape mode)
 
 The following **optional** features are implemented:
 
@@ -44,7 +44,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+
 
 ## Open-source libraries used
 
@@ -53,7 +53,7 @@ Describe any challenges encountered while building the app.
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright 2017 Tessa
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
