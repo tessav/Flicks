@@ -1,6 +1,7 @@
 package com.example.tessav.flicks.adapters;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,9 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.ivMovieImage.setImageResource(0);
-        Picasso.with(getContext()).load(movie.getPosterPath()).into(viewHolder.ivMovieImage);
+        String mvImage = getContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ?
+                movie.getPosterPath() : movie.getBackdropPath();
+        Picasso.with(getContext()).load(mvImage).into(viewHolder.ivMovieImage);
         viewHolder.tvTitle.setText(movie.getOriginalTitle());
         viewHolder.tvOverview.setText(movie.getOverview());
 
