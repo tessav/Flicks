@@ -19,6 +19,7 @@ import java.util.List;
  */
 
 public class MovieArrayAdapter extends ArrayAdapter<Movie> {
+    int OVERVIEW_MAX_LENGTH = 150;
 
     public MovieArrayAdapter(Context context, List<Movie> movies) {
         super(context, android.R.layout.simple_list_item_1, movies);
@@ -39,10 +40,15 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         TextView tvOverview = (TextView) convertView.findViewById(R.id.tvOverview);
 
         tvTitle.setText(movie.getOriginalTitle());
+        // String mvOverview = truncateOverviewText(movie.getOverview());
         tvOverview.setText(movie.getOverview());
 
         Picasso.with(getContext()).load(movie.getPosterPath()).into(ivImage);
 
         return convertView;
     }
+//
+//    private String truncateOverviewText(String mvOverview) {
+//        if mvOverview.length() <=
+//    }
 }
