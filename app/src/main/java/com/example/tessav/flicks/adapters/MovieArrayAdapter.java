@@ -15,6 +15,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
+
 import static com.example.tessav.flicks.R.id.tvOverview;
 import static com.example.tessav.flicks.R.id.tvTitle;
 
@@ -53,7 +55,9 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         viewHolder.ivMovieImage.setImageResource(0);
         String mvImage = getContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ?
                 movie.getPosterPath() : movie.getBackdropPath();
-        Picasso.with(getContext()).load(mvImage).into(viewHolder.ivMovieImage);
+        Picasso.with(getContext()).load(mvImage).transform(new RoundedCornersTransformation(10, 10))
+                .placeholder(R.drawable.user_placeholder)
+                .error(R.drawable.user_placeholder).into(viewHolder.ivMovieImage);
         viewHolder.tvTitle.setText(movie.getOriginalTitle());
         viewHolder.tvOverview.setText(movie.getOverview());
 
