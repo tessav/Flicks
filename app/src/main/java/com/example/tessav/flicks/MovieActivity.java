@@ -1,10 +1,14 @@
 package com.example.tessav.flicks;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.tessav.flicks.activities.QuickPlayActivity;
 import com.example.tessav.flicks.adapters.MovieArrayAdapter;
 import com.example.tessav.flicks.models.Movie;
 import com.loopj.android.http.AsyncHttpClient;
@@ -56,5 +60,22 @@ public class MovieActivity extends AppCompatActivity {
                 super.onFailure(statusCode, headers, responseString, throwable);
             }
         });
+
+        setupListViewListener();
+    }
+
+    private void setupListViewListener() {
+        // edit task or show more details
+        lvItems.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapter, View item,
+                                            int pos, long id) {
+                        Intent openVideo = new Intent(MovieActivity.this, QuickPlayActivity.class);
+                        openVideo.putExtra("movieId", movies.get(pos).getMovieId());
+                        startActivity(openVideo);
+                    }
+                }
+        );
     }
 }

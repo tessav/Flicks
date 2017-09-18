@@ -27,12 +27,6 @@ import jp.wasabeef.picasso.transformations.RoundedCornersTransformation;
 public class MovieArrayAdapter extends ArrayAdapter<Movie> {
 
 
-//    private static class ViewHolder {
-//        ImageView ivMovieImage;
-//        TextView tvTitle;
-//        TextView tvOverview;
-//    }
-
     public MovieArrayAdapter(Context context, List<Movie> movies) {
         super(context, android.R.layout.simple_list_item_1, movies);
     }

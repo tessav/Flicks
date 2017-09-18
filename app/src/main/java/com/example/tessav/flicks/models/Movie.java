@@ -36,11 +36,16 @@ public class Movie {
         return movieType;
     }
 
+    public Integer getMovieId() {
+        return id;
+    }
+
     String posterPath;
     String backdropPath;
     String originalTitle;
     String overview;
     Integer voteAvg;
+    Integer id;
     MovieTypes movieType;
 
     public Movie(JSONObject jsonObject) throws JSONException {
@@ -50,6 +55,7 @@ public class Movie {
         this.overview = jsonObject.getString("overview");
         this.voteAvg = jsonObject.getInt("vote_average");
         this.movieType = (this.voteAvg > 5) ? MovieTypes.POPULAR : MovieTypes.NORMAL;
+        this.id = jsonObject.getInt("id");
     }
 
     public static ArrayList<Movie> fromJSONArray(JSONArray array) {
