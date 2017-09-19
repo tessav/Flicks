@@ -3,11 +3,11 @@ package com.example.tessav.flicks;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.tessav.flicks.activities.MovieDetailActivity;
 import com.example.tessav.flicks.activities.QuickPlayActivity;
 import com.example.tessav.flicks.adapters.MovieArrayAdapter;
 import com.example.tessav.flicks.models.Movie;
@@ -49,7 +49,6 @@ public class MovieActivity extends AppCompatActivity {
                     movieJsonResults = response.getJSONArray("results");
                     movies.addAll(Movie.fromJSONArray(movieJsonResults));
                     movieAdapter.notifyDataSetChanged();
-                    Log.d("DEBUG", movies.toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -71,9 +70,19 @@ public class MovieActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> adapter, View item,
                                             int pos, long id) {
-                        Intent openVideo = new Intent(MovieActivity.this, QuickPlayActivity.class);
-                        openVideo.putExtra("movieId", movies.get(pos).getMovieId());
-                        startActivity(openVideo);
+                        Intent openActivity;
+                        if (movies.get(pos).getMovieType() == Movie.MovieTypes.POPULAR) {
+                            openActivity = new Intent(MovieActivity.this, QuickPlayActivity.class);
+                            openActivity.putExtra("movieId", movies.get(pos).getMovieId());
+                        } else {
+                            openActivity = new Intent(MovieActivity.this, MovieDetailActivity.class);
+                            openActivity.putExtra("movieTitle", movies.get(pos).getOriginalTitle());
+                            openActivity.putExtra("movieOverview", movies.get(pos).getOverview());
+                            openActivity.putExtra("movieVoteAvg", movies.get(pos).getVoteAvg());
+                            openActivity.putExtra("moviePopularity", movies.get(pos).getPopularity());
+                            openActivity.putExtra("movieId", movies.get(pos).getMovieId());
+                        }
+                        startActivity(openActivity);
                     }
                 }
         );

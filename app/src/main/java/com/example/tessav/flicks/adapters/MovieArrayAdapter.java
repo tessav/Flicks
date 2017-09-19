@@ -47,46 +47,53 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         int type = getItemViewType(position);
 
         if (type == Movie.MovieTypes.POPULAR.ordinal()) {
-
-            PopularViewHolder popularViewHolder;
-            View v = convertView;
-            if (v == null) {
-                v = getInflatedLayoutForType(type, parent);
-                popularViewHolder = new PopularViewHolder(v);
-                v.setTag(popularViewHolder);
-            } else {
-                popularViewHolder = (PopularViewHolder) v.getTag();
-            }
-            popularViewHolder.ivMovieImage.setImageResource(0);
-            String mvImage = movie.getBackdropPath();
-            Picasso.with(getContext()).load(mvImage).transform(new RoundedCornersTransformation(10, 10))
-                 .placeholder(R.drawable.user_placeholder)
-                .error(R.drawable.user_placeholder).into(popularViewHolder.ivMovieImage);
-            return v;
+            return setUpPopularView(convertView, type, parent, movie);
 
         } else if (type == Movie.MovieTypes.NORMAL.ordinal()) {
-            NormalViewHolder normalViewHolder;
-            View v = convertView;
-            if (v == null) {
-                v = getInflatedLayoutForType(type, parent);
-                normalViewHolder = new NormalViewHolder(v);
-                v.setTag(normalViewHolder);
-            } else {
-                normalViewHolder = (NormalViewHolder) v.getTag();
-            }
-            normalViewHolder.ivMovieImage.setImageResource(0);
-            String mvImage = getContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ?
-                    movie.getPosterPath() : movie.getBackdropPath();
-            Picasso.with(getContext()).load(mvImage).transform(new RoundedCornersTransformation(10, 10))
-                    .placeholder(R.drawable.user_placeholder)
-                    .error(R.drawable.user_placeholder).into(normalViewHolder.ivMovieImage);
-            normalViewHolder.tvTitle.setText(movie.getOriginalTitle());
-            normalViewHolder.tvOverview.setText(movie.getOverview());
-            return v;
+           return setUpNormalView(convertView, type, parent, movie);
         } else {
             return convertView;
         }
 
+    }
+
+    private View setUpNormalView(View convertView, int type, ViewGroup parent, Movie movie) {
+        NormalViewHolder normalViewHolder;
+        View v = convertView;
+        if (v == null) {
+            v = getInflatedLayoutForType(type, parent);
+            normalViewHolder = new NormalViewHolder(v);
+            v.setTag(normalViewHolder);
+        } else {
+            normalViewHolder = (NormalViewHolder) v.getTag();
+        }
+        normalViewHolder.ivMovieImage.setImageResource(0);
+        String mvImage = getContext().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT ?
+                movie.getPosterPath() : movie.getBackdropPath();
+        Picasso.with(getContext()).load(mvImage).transform(new RoundedCornersTransformation(10, 10))
+                .placeholder(R.mipmap.user_placeholder1)
+                .error(R.drawable.user_placeholder).into(normalViewHolder.ivMovieImage);
+        normalViewHolder.tvTitle.setText(movie.getOriginalTitle());
+        normalViewHolder.tvOverview.setText(movie.getOverview());
+        return v;
+    }
+
+    private View setUpPopularView(View convertView, int type, ViewGroup parent, Movie movie) {
+        PopularViewHolder popularViewHolder;
+        View v = convertView;
+        if (v == null) {
+            v = getInflatedLayoutForType(type, parent);
+            popularViewHolder = new PopularViewHolder(v);
+            v.setTag(popularViewHolder);
+        } else {
+            popularViewHolder = (PopularViewHolder) v.getTag();
+        }
+        popularViewHolder.ivMovieImage.setImageResource(0);
+        String mvImage = movie.getBackdropPath();
+        Picasso.with(getContext()).load(mvImage).transform(new RoundedCornersTransformation(10, 10))
+                .placeholder(R.mipmap.user_placeholder1)
+                .error(R.drawable.user_placeholder).into(popularViewHolder.ivMovieImage);
+        return v;
     }
 
     private View getInflatedLayoutForType(int type, ViewGroup parent) {
