@@ -40,12 +40,22 @@ public class Movie {
         return id;
     }
 
+    public Double getPopularity() {
+        return popularity;
+    }
+
+    public Integer getVoteAvg() {
+        return voteAvg;
+    }
+
+
     String posterPath;
     String backdropPath;
     String originalTitle;
     String overview;
     Integer voteAvg;
     Integer id;
+    Double popularity;
     MovieTypes movieType;
 
     public Movie(JSONObject jsonObject) throws JSONException {
@@ -54,6 +64,7 @@ public class Movie {
         this.originalTitle = jsonObject.getString("original_title");
         this.overview = jsonObject.getString("overview");
         this.voteAvg = jsonObject.getInt("vote_average");
+        this.popularity = jsonObject.getDouble("popularity");
         this.movieType = (this.voteAvg > 5) ? MovieTypes.POPULAR : MovieTypes.NORMAL;
         this.id = jsonObject.getInt("id");
     }

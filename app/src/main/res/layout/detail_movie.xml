@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@android:color/background_dark"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/detailPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvDetailTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="title"
+        android:textColor="@android:color/white"
+        android:textSize="30sp"
+        android:layout_alignTop="@+id/detailRatingBar"
+        android:layout_alignLeft="@+id/detailRatingBar"
+        android:layout_alignStart="@+id/detailRatingBar"
+        android:layout_marginTop="44dp" />
+
+    <TextView
+        android:id="@+id/tvDetailOverview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvDetailTitle"
+        android:layout_alignStart="@+id/tvDetailTitle"
+        android:layout_below="@+id/tvDetailTitle"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="46dp"
+        android:text="overview"
+        android:textColor="?android:attr/textColorSecondaryInverse" />
+
+    <RatingBar
+        android:id="@+id/detailRatingBar"
+        style="@style/Widget.AppCompat.RatingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="27dp"
+        android:progressBackgroundTint="@android:color/white"
+        android:progressTint="@color/starColor"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
+        android:secondaryProgressTint="@color/starColor"
+        android:transformPivotX="0dp"
+        android:layout_below="@+id/detailPlayer"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tvPopularity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="12dp"
+        android:text="tvPopularity"
+        android:textColor="?android:attr/textColorSecondaryInverse"
+        android:layout_below="@+id/tvDetailTitle"
+        android:layout_toRightOf="@+id/popularitystring"
+        android:layout_toEndOf="@+id/popularitystring" />
+
+    <TextView
+        android:id="@+id/popularitystring"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvPopularity"
+        android:layout_alignBottom="@+id/tvPopularity"
+        android:layout_alignLeft="@+id/tvDetailTitle"
+        android:layout_alignStart="@+id/tvDetailTitle"
+        android:text="@string/popularity"
+        android:textColor="?android:attr/textColorSecondaryInverse" />
+</RelativeLayout>

@@ -77,7 +77,7 @@ public class MovieArrayAdapter extends ArrayAdapter<Movie> {
         normalViewHolder.tvOverview.setText(movie.getOverview());
         return v;
     }
-    
+
     private View setUpPopularView(View convertView, int type, ViewGroup parent, Movie movie) {
         PopularViewHolder popularViewHolder;
         View v = convertView;
